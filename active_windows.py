@@ -31,7 +31,7 @@ styleSheet = """
 def loop_function():
     import importXlib
 
-class MainWindow(QLabel):
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
