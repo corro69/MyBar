@@ -31,7 +31,7 @@ styleSheet = """
 def loop_function():
     import importXlib
 
-class MainWindow(QMainWindow):
+class MainWindow(QLabel):
     def __init__(self):
         super().__init__()
 
@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         self.setWindowFlag(Qt.WindowStaysOnTopHint)
         self.setWindowFlag(Qt.FramelessWindowHint) 
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.setFixedSize(QSize(width-2000, height))
+        self.setFixedSize(QSize(width-1500, height))
 
         self.identify_windows()
 
@@ -57,7 +57,6 @@ class MainWindow(QMainWindow):
         button = QLabel(win_title,self)
         button.setAttribute(Qt.WA_TranslucentBackground)
         button.move(0,0)
-        button.resize(200,25)
 
 window = MainWindow()
 
