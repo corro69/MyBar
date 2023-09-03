@@ -34,8 +34,8 @@ this_time = time.toString('M/d/yyyy h:mm:ss ap')
 
 net_dev = 'wlp2s0'
 
-def loop_function():
-    import importXlib
+def window_detect():
+    import active_windows
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -60,30 +60,19 @@ class MainWindow(QMainWindow):
         timer.timeout.connect(self.showTime)
         timer.start(1000)
 
+
         self.identify_host()
 
         self.identify_network()
 
         self.identify_user()
 
-        self.identify_windows()
+    threading.Thread(target=window_detect).start()
 
     def identify_host(self):
         button = QLabel(socket.gethostname(),self)
         button.setAttribute(Qt.WA_TranslucentBackground)
         button.move(0,0)
-        button.resize(200,25)
-
-    def identify_windows(self):
-        threading.Thread(target=loop_function).start()
-        
-        disp = Xlib.display.Display()
-        windows = disp.get_input_focus().focus
-        win_title = windows.get_wm_name()
-        
-        button = QLabel(win_title,self)
-        button.setAttribute(Qt.WA_TranslucentBackground)
-        button.move(600,0)
         button.resize(200,25)
 
     def identify_user(self):
