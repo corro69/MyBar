@@ -31,13 +31,12 @@ styleSheet = """
 def loop_function():
     import importXlib
 
-class MainWindow(QMainWindow):
+class MainWindow(QDialog):
     def __init__(self):
         super().__init__()
 
         self.setStyleSheet(styleSheet)
         self.move(position_x,position_y)
-
         self.setWindowFlag(Qt.X11BypassWindowManagerHint)
         self.setWindowFlag(Qt.NoDropShadowWindowHint)
         self.setWindowFlag(Qt.WindowStaysOnTopHint)
@@ -46,7 +45,7 @@ class MainWindow(QMainWindow):
         self.setFixedSize(QSize(width-1500, height))
 
         self.identify_windows()
-
+    
     def identify_windows(self):
         threading.Thread(target=loop_function).start()
         
